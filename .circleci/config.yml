@@ -18,6 +18,7 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      # obtain the repo from github
       - checkout
 
       # Download and cache dependencies
@@ -48,7 +49,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python manage.py test
+            python -m unnittest test_calculator.py
 
       - store_artifacts:
           path: test-reports
