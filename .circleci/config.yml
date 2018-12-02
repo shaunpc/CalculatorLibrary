@@ -44,16 +44,16 @@ jobs:
       - run:
           name: create output dir
           command: |
-            mkdir /test-reports
-            date > test-reports/result.txt
+            mkdir /tmp/test-reports
+            date > /tmp/test-reports/result.txt
 
       # run tests!
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m unittest test_calculator.py >> /test-reports/result.txt
+            python -m unittest test_calculator.py >> /tmp/test-reports/result.txt
 
       - store_artifacts:
-          path: test-reports
+          path: /tmp/test-reports
           destination: test-reports
