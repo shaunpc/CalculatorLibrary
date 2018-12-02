@@ -49,6 +49,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
+            mkdir /test-reports
             date > test-reports/result.txt
             python -m unittest test_calculator.py >> /test-reports/result.txt
 
