@@ -49,8 +49,8 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            echo "my artifact file" > /test-reports/test-report.txt
-            python -m unittest test_calculator.py >> /test-reports/test-report.txt
+            date > test-reports/result.txt
+            python -m unittest test_calculator.py >> /test-reports/result.txt
 
       - store_artifacts:
           path: test-reports
