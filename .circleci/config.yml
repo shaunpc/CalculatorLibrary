@@ -40,17 +40,18 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
+      # ensure test result directory exists
+      - run:
+          name: create output dir
+          command: |
+            mkdir /test-reports
+            date > test-reports/result.txt
+
       # run tests!
-      # this example uses Django's built-in test-runner
-      # other common Python testing frameworks include pytest and nose
-      # https://pytest.org
-      # https://nose.readthedocs.io
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            mkdir /test-reports
-            date > test-reports/result.txt
             python -m unittest test_calculator.py >> /test-reports/result.txt
 
       - store_artifacts:
